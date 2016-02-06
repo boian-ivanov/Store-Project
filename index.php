@@ -11,8 +11,8 @@
 session_start();
 require('database.php');
 
-echo "<h1>Каталог</h1>
-<b id=".cart."><a href=". 'cart.php' .">Кошница</a></b>";
+echo "<h1><a href=". 'index.php' .">Catalog</a></h1>
+<b id=".cart."><a href=". 'cart.php' .">Show cart</a></b>";
 
 if ($result = $connection->query("SELECT * FROM `store`")) {
 	$row_cnt = $result->num_rows;
@@ -25,21 +25,25 @@ if ($result = $connection->query("SELECT * FROM `store`")) {
 				<td>
 					<h2>". $row[name] ."</h2><br>
 					". $row[description] ."<br><br>
-					Цена : ". $row[price] ."$<br>
+					Price : ". $row[price] ."$<br>
 				</td>
 				<td	>
-					<input type='submit' name='add".$row[id]."' value='Добави в кошницата'/>
+					<input type='submit' name='add".$row[id]."' value='Add to cart'/>
 				</td>
 			</table>
 		</p>
 		";
+		
+		if(isset($_GET['add.$row[id].'])){
+			$cart=1;
+			if(mysqli_query($connection, "INSERT INTO `store-project`.`store` (`incart`) VALUES ('$cart')")){
+				mysqli_close($connection);
+				header("Location: cart.php");
+			}	
+		}
     }
 	
-	// for($i=0;$i<$row_cnt;$i++){
-		// if(isset($_GET['add.$row[id].'])){
-			
-		// }
-	// }
+	
 	$result->close();
 }
 ?>
