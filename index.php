@@ -10,42 +10,39 @@
 <?php 
 session_start();
 require('database.php');
-
 echo "<h1><a href=". 'index.php' .">Catalog</a></h1>
 <b id=".cart."><a href=". 'cart.php' .">Show cart</a></b>";
-
-if ($result = $connection->query("SELECT * FROM `store`")) {
-	$row_cnt = $result->num_rows;
-	while ($row = $result->fetch_assoc()) {
+	// $store_query=$connection->prepare('SELECT img_path, img_name, name, description, price, id FROM `store`;');
+	// $store_query->bind_result($img_path, $img_name, $name, $description, $price, $id);
+	// $store_query->execute();
+	while ($store_query->fetch()) {
 		echo "<p>
 			<table>
 				<th>
-					<img src=".$row[img_path].'/'.$row[img_name].">
+					<img src=".$img_path.'/'.$img_name.">
 				</th>
 				<td>
-					<h2>". $row[name] ."</h2><br>
-					". $row[description] ."<br><br>
-					Price : ". $row[price] ."$<br>
+					<h2>". $name ."</h2><br>
+					". $description ."<br><br>
+					Price : ". $price ."$<br>
 				</td>
-				<td	>
-					<input type='submit' name='add".$row[id]."' value='Add to cart'/>
+				<td>
+					<input type='submit' name='add".$id."' value='Add to cart'/>
 				</td>
 			</table>
-		</p>
-		";
-		
-		if(isset($_GET['add.$row[id].'])){
+		</p>";
+		if(isset($_GET['add'.$id.''])){
 			$cart=1;
-			if(mysqli_query($connection, "INSERT INTO `store-project`.`store` (`incart`) VALUES ('$cart')")){
-				mysqli_close($connection);
-				header("Location: cart.php");
-			}	
+			//$cart_query=$connection->prepare('INSERT INTO `store-project`.`store` (`incart`) VALUES(?)');
+			$cart_query=$connection->prepare('UPDATE `store-project`.`store` SET `incart` = 1 WHERE `store`.`id` = ?');
+			$cart_query->bind_param('i', $id);
+			$cart_query->execute();
+			$cart_query->close(); //Close query
+			header("Location: cart.php");	
 		}
-    }
-	
-	
-	$result->close();
-}
+    	}
+    	$store_query->close(); //close store query
+	mysqli_close($connection); //Done with the database, closing connection
 ?>
 </form>
 </body>

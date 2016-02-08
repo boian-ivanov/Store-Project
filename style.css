@@ -3,10 +3,19 @@ width:250px;
 height:200px;
 }
 td{
-width:400px;
+//width:400px;
 }
 
 #cart{
 float:right;
 padding:0px;
+}
+#table_cart, tr{
+width:75%;
+border-collapse:collapse;
+border:1px solid black; 
+}
+
+th{
+border:1px solid black; 
 }
