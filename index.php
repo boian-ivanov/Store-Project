@@ -12,16 +12,9 @@ session_start();
 require('database.php');
 echo "<h1><a href=". 'index.php' .">Catalog</a></h1>
 <b id=".cart."><a href=". 'cart.php' .">Show cart</a></b>";
-<<<<<<< HEAD
 	// $store_query=$connection->prepare('SELECT img_path, img_name, name, description, price, id FROM `store`;');
 	// $store_query->bind_result($img_path, $img_name, $name, $description, $price, $id);
 	// $store_query->execute();
-=======
-
-	$store_query=$connection->prepare('SELECT img_path, img_name, name, description, price, id FROM `store`;');
-	$store_query->bind_result($img_path, $img_name, $name, $description, $price, $id);
-	$store_query->execute();
->>>>>>> origin/master
 	while ($store_query->fetch()) {
 		echo "<p>
 			<table>
@@ -38,18 +31,11 @@ echo "<h1><a href=". 'index.php' .">Catalog</a></h1>
 				</td>
 			</table>
 		</p>";
-<<<<<<< HEAD
 		if(isset($_GET['add'.$id.''])){
 			$cart=1;
 			//$cart_query=$connection->prepare('INSERT INTO `store-project`.`store` (`incart`) VALUES(?)');
 			$cart_query=$connection->prepare('UPDATE `store-project`.`store` SET `incart` = 1 WHERE `store`.`id` = ?');
 			$cart_query->bind_param('i', $id);
-=======
-		if(isset($_GET['add.$row[id].'])){
-			$cart=1;
-			$cart_query=$connection->prepare('INSERT INTO `store-project`.`store` (`incart`) VALUES(?);');
-			$cart_query->bind_param('i',$cart);
->>>>>>> origin/master
 			$cart_query->execute();
 			$cart_query->close(); //Close query
 			header("Location: cart.php");	

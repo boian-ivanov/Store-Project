@@ -3,13 +3,9 @@ $connection = mysqli_connect("127.0.0.1","root","","store-project"); // there is
 //if($connection){ an empty-ish variable evaluates to false so ==0 is not needed, also this entire if-block is not needed because you're not catching the error in it.
 //    echo "Connection Failed";
 //}
-<<<<<<< HEAD
 
 $store_query=$connection->prepare('SELECT img_path, img_name, name, description, price, id, incart FROM `store`;');
 $store_query->bind_result($img_path, $img_name, $name, $description, $price, $id, $incart);
 $store_query->execute();
 
 ?>
-=======
-?>
->>>>>>> origin/master
