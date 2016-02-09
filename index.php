@@ -1,6 +1,12 @@
-<!Doctype HTML>
+<?php
+@session_start();
+require('database.php');
+ob_start();
+?>
+<!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css" type="text/css"/>
 	<title>Онлайн Каталог</title>
 </head>
@@ -8,14 +14,10 @@
 <form action="" method="get">
 
 <?php 
-session_start();
-require('database.php');
-echo "<h1><a href=". 'index.php' .">Catalog</a></h1>
-<b id=".cart."><a href=". 'cart.php' .">Show cart</a></b>";
-	// $store_query=$connection->prepare('SELECT img_path, img_name, name, description, price, id FROM `store`;');
-	// $store_query->bind_result($img_path, $img_name, $name, $description, $price, $id);
-	// $store_query->execute();
-	while ($store_query->fetch()) {
+echo "<h1><a href=". 'index.php' .">Каталог</a></h1>
+<b id=".cart."><a href=". 'cart.php' .">Покажи кошница</a></b>";
+	while ( ($row=$store_query->fetch_assoc()) !== null) {
+		extract($row);
 		echo "<p>
 			<table>
 				<th>
@@ -24,25 +26,24 @@ echo "<h1><a href=". 'index.php' .">Catalog</a></h1>
 				<td>
 					<h2>". $name ."</h2><br>
 					". $description ."<br><br>
-					Price : ". $price ."$<br>
+					Цена : ". $price ."$<br>
 				</td>
 				<td>
-					<input type='submit' name='add".$id."' value='Add to cart'/>
+					<input type='submit' name='add".$id."' value='Добави в кошница'/>
 				</td>
 			</table>
 		</p>";
 		if(isset($_GET['add'.$id.''])){
-			$cart=1;
-			//$cart_query=$connection->prepare('INSERT INTO `store-project`.`store` (`incart`) VALUES(?)');
-			$cart_query=$connection->prepare('UPDATE `store-project`.`store` SET `incart` = 1 WHERE `store`.`id` = ?');
-			$cart_query->bind_param('i', $id);
-			$cart_query->execute();
-			$cart_query->close(); //Close query
-			header("Location: cart.php");	
+			$cart_query=$connection->prepare('UPDATE `store` SET `incart` = 1 WHERE `id` = ?');
+			$cart_query -> bind_param("i", $id);
+			$cart_query -> execute();
+			$cart_query -> close(); 
+			header("Location: cart.php");
 		}
-    	}
-    	$store_query->close(); //close store query
-	mysqli_close($connection); //Done with the database, closing connection
+    }
+    	$store_query->close();
+	mysqli_close($connection);
+	ob_end_flush();
 ?>
 </form>
 </body>
