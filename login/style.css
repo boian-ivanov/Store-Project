@@ -1,0 +1,109 @@
+@import http://fonts.googleapis.com/css?family=Raleway;
+
+#main {
+width:960px;
+float:center;
+margin:50px auto;
+font-size:15px;
+font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+background-color:#FFFFFF
+}
+span {
+color:red
+}
+/*background-color:#FEFFED;*/
+h1 {
+text-align:center;
+border-radius:10px 10px 0 0;
+margin:-10px -40px;
+padding:15px
+}
+h2 {
+background-color:#FFFFFF;
+text-align:center;
+border-radius:10px 10px 0 0;
+margin:-10px -40px;
+padding:15px
+}
+hr {
+border:0;
+border-bottom:1px solid #ccc;
+margin:10px -40px;
+margin-bottom:30px
+}
+#login {
+margin: auto;
+width:30%;
+float:center;
+border-radius:10px;
+font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+border:3px solid #ccc;
+padding:15px 40px 25px;
+margin-top:70px
+}
+/*input[type=text],input[type=password],input[type=email]*/
+#name, #username, #email, #password {
+width:99.5%;
+padding:8px;
+margin-top:10px;
+border:1px solid #ccc;
+padding-left:5px;
+font-size:17px;
+font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif
+}
+/*input[type=submit]*/
+#submit {
+width:105%;
+background-color:#3398ff;
+color:#fff;
+border:2px solid #4da5ff;
+padding:10px;
+font-size:20px;
+cursor:pointer;
+border-radius:5px;
+margin-top:10px;
+margin-bottom:15px
+}
+
+#btn_register {
+width:105%;
+background-color:#ff870f;
+color:#fff;
+border:2px solid #ff751a;
+padding:10px;
+font-size:20px;
+cursor:pointer;
+border-radius:5px;
+margin-top:10px;
+margin-bottom:15px
+}
+
+#profile {
+padding:5px;
+border:1px;
+font-size:20px;
+background-color:#DCE6F7
+}
+
+/*#welcome {
+text-align: center;
+}*/
+
+#logout {
+float:right;
+padding:5px;
+/*border:dashed 1px gray*/
+}
+a {
+text-decoration:none;
+color:#6495ed
+}
+i {
+color:#6495ed
+}
+
+#Home {
+float:right;
+padding:5px;
+/*border:dashed 1px gray*/
+}

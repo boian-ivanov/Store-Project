@@ -23,6 +23,12 @@
 				</tr>";
 				
 	while ( ($row=$store_query->fetch_assoc()) !== null) {
+		if(isset($_POST['check'.$id]) && isset($_POST['remove'])){
+			$cart_query=$connection->prepare('UPDATE `store` SET `incart` = 0 WHERE `id` = ?');
+			$cart_query->bind_param('i', $id);
+			$cart_query->execute();
+			$cart_query->close();
+		}
 		extract($row);
 		if($incart==1){
 			$allprice +=$price;
@@ -32,12 +38,6 @@
 				<th>".$price."$</th>
 				</tr>
 			";
-		}
-		if(isset($_POST['check'.$id]) && isset($_POST['remove'])){
-			$cart_query=$connection->prepare('UPDATE `store` SET `incart` = 0 WHERE `id` = ?');
-			$cart_query->bind_param('i', $id);
-			$cart_query->execute();
-			$cart_query->close();
 		}
 	}
 	echo "	<tr>
