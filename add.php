@@ -16,10 +16,9 @@ $description = $_POST['description'];
 $price = $_POST['price'];
 $usr_id = $_SESSION['login_id'];
 
-
 if(isset($_POST['accept_btn'])){
 
-	$check = getimagesize($_FILES["img_upload"]["tmp_name"]);
+	@$check = getimagesize($_FILES["img_upload"]["tmp_name"]);
 	if($check !== false) {
         // echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
@@ -65,23 +64,51 @@ if(isset($_POST['accept_btn'])){
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css" type="text/css"/>
-	<title>Add a Prduct</title>
-</head>
-<body>
-<!-- <form action="upload.php" method="POST" enctype="multipart/form-data"> -->
-<form method="POST" enctype="multipart/form-data">
-	<a href="index.php"><h1>Обяви.com</h1></a>
-	<h1>Add a Product</h1><br>
-	Title : <input id="name" type="text" name="name"></input><br>
-	Description : <br><textarea id="description" name="description" rows="4" cols="50"></textarea><br>
-	Price : <input id="price" type="number" name="price"></input><br>
-	<input type="file" name="img_upload" id="img_upload"><br>
-  	<input type="submit" name="accept_btn" value="Accept">
-</form>
-</body>
-</html>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <title>Add a Prduct</title>
+    </head>
+
+    <body>
+        <script>
+            function getFile() {
+                document.getElementById("img_upload").click();
+            }
+
+            function sendFile() {
+                if (document.getElementById("img_upload").files.length == 0) {
+                    alert("Cannot add a product without an image!");
+                    return false;
+                } else /*if (document.getElementById("name").)*/{
+                    return true;
+                }
+            }
+        </script>
+        <!-- <form action="upload.php" method="POST" enctype="multipart/form-data"> -->
+        <form id="form_add" method="POST" enctype="multipart/form-data" onSubmit="return sendFile();">
+            <h1 id="Head_Ob"><a id="Head_Ob" href="index.php">Обяви.com</a></h1>
+            <h1 id="head">Add a Product</h1>
+            <div id="add">
+                <input id="name" type="text" placeholder="Title" name="name"></input>
+                <br>
+                <textarea id="description" placeholder="Description" name="description" rows="4" cols="50"></textarea>
+                <br>
+                <input id="price" type="number" placeholder="Price" name="price"></input>
+                <br>
+
+                <div id="yourBtn" style="height: 50px; width: 100px;border: 1px dashed #BBB; cursor:pointer;" onclick="getFile()">Click to upload!</div>
+                <div style='height: 0px;width: 0px; overflow:hidden;'>
+                    <input type="file" name="img_upload" id="img_upload">
+                    <br>
+                </div>
+
+                <input id="accept_btn" type="submit" name="accept_btn" value="Accept">
+            </div>
+        </form>
+    </body>
+
+    </html>

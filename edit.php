@@ -1,3 +1,6 @@
+<?php
+require('/login/session.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,11 +9,10 @@
 	<title>Edit your Ads</title>
 </head>
 <body>
-<form action="" method="post">
-<h1><a href="index.php">Обяви.com</a></h1>
+<form id="container" method="post">
 
 <?php
-require('/login/session.php');
+include("sidebar.php");
 
 if(!isset($_SESSION['login_user'])){
 	header("Location: index.php");
@@ -25,12 +27,12 @@ $ads_query=$connection->query('SELECT id, img_path, img_name, ad_name, descripti
 while (($row=$ads_query->fetch_assoc()) !== null) {
 	extract($row);
 	if($_POST[edit] == $id){
-		echo " Title : <input type='text' name='name' value='".$ad_name."'><br><br>
+		echo "<div class='edit_div'> Title : <input type='text' name='name' value='".$ad_name."'><br><br>
 			  Description : <br><textarea id='description' name='description' rows='9' cols='70'>".$description."</textarea><br>
 			  Price : <input type='text' name='price' value='".$price."'><br><br>
 			  <button type='submit' name='confirm' value='".$id."'>Confirm edit</button><br>
 			  <a href =". 'edit.php' .">Return to your products</a><br>
-			  ";
+			  </div>";
 			 echo 'UPDATE ads SET ad_name='."'".$ad_name."'".', description='."'".$description."'".', price ='."'".$price."'".'WHERE id = '.$id;
 			 if(isset($_POST[confirm])) {
 			 	//$confirm_query=

@@ -1,3 +1,150 @@
+/*index.php*/
+body {
+    background: lightgrey;
+    color: #444;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    height: auto !important;
+    height: 100%;
+    min-height: 100%;
+    text-rendering: optimizeLegibility;
+    padding-right: 10%;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.vertical {
+    position: fixed;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 130px;
+    background: darkslategray;
+    transition: width ease .5s;
+}
+
+.vertical ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.vertical ul li {
+    margin-bottom: 25px;
+}
+.vertical a {
+    color: slategrey;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color ease .35s, border-bottom-color ease .35s;
+}
+.vertical a:hover {
+    text-decoration: none;
+    color: white;
+    border-bottom-color: white;
+}
+
+#Hello {
+    color: azure;
+}
+
+/*
+.ob_out {
+    position:relative;
+    margin-left:75px; // push the right column past the left column, with some room as well.
+    transition:margin-left ease .5s; // fluid transition when resizing
+}
+*/
+/*nav.vertical {
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,.15);
+    overflow: hidden;
+    text-align: center;
+}
+
+nav.vertical > ul {
+    list-style-type: none;
+}
+
+nav.vertical > ul > li {
+    display: block;
+}
+
+nav.vertical > ul > li > a {
+    background-color: rgb(157, 34, 60);
+    background-image: -webkit-linear-gradient(135deg, rgb(114, 51, 98), rgb(157, 34, 60));
+    background-image: -moz-linear-gradient(135deg, rgb(114, 51, 98), rgb(157, 34, 60));
+    background-image: -o-linear-gradient(135deg, rgb(114, 51, 98), rgb(157, 34, 60));
+    background-image: linear-gradient(135deg, rgb(114, 51, 98), rgb(157, 34, 60));
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.1), 0 1px 1px rgba(0,0,0,.1);
+    color: rgb(255,255,255);
+    display: block;
+    font-size: .85rem;
+    font-weight: 500;
+    height: 50px;
+    letter-spacing: .5rem;
+    line-height: 50px;
+    text-shadow: 0 1px 1px rgba(0,0,0,.1);
+    text-transform: uppercase;
+    transition: all .1s ease;
+    text-decoration: none;
+}
+
+nav.vertical > ul > li > a:hover {
+    background-color: rgb(114, 51, 98);
+    background-image: -webkit-linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98));
+    background-image: -moz-linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98));
+    background-image: -o-linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98));
+    background-image: linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98)); 
+    cursor: pointer;
+}*/
+
+#Head_Ob {
+    text-decoration: none;
+    color: #444;
+    text-align: center;
+    transition: color ease .5s;
+}
+
+#Head_Ob:hover{
+    text-decoration: none;
+    color: #6495ed;
+}
+
+/*.ob_ins{
+    background-color: white;
+    margin: auto;
+    float: right;
+    padding: 10px;    
+    padding-right: 10%;
+    width: 75%;
+    box-shadow: 1px 1px 10px grey;
+}*/
+
+#container{
+    background-color: white;
+    box-shadow: 1px 1px 10px grey;
+    border-radius: 5px;
+    margin: auto;
+    padding: 10px;
+    width: 60%;
+/*    border: 1px solid #73AD21;*/
+    column-span: 50;
+    padding: 10px;
+    position:relative;
+/*    margin-left:75px;*/
+    transition:margin-left ease .5s; // fluid transition when resizing
+
+}
+
+
+
+
 img{
 width:250px;
 height:200px;
@@ -16,6 +163,64 @@ border-collapse:collapse;
 border:1px solid black; 
 }
 
-th{
-border:1px solid black; 
+/*add.php*/
+
+#form_add{
+    width: 110%;
+}
+
+#head{
+    float: center;
+/*    border: 2px solid red;*/
+    text-align: center;
+/*    width: 111%;*/
+
+}
+
+#add {
+/*    position: relative;*/
+    border-radius: 8px;
+    border: 1px solid grey;
+    width: 470px;
+    background: white;
+    margin: auto;
+    float: center;
+    box-shadow: 1px 1px 10px grey;
+}
+
+#add *{
+    margin: 10px;
+    width: 450px;
+}
+
+
+/*text poleta*/
+#name,
+#description,
+#price {
+    border: 1px solid grey;
+    border-radius: 5px;
+    line-height: 35px;
+    text-indent: 5px;
+}
+
+#accept_btn{
+    width: 95%;
+    float: center;    
+    background-color: #3398ff;
+    color: #fff;
+    border: 2px solid #4da5ff;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 15px
+}
+
+/*edit.php*/
+
+.edit_div{
+    border: 2px solid black;
+    background-color: white;
 }

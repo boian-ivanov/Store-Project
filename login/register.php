@@ -46,14 +46,13 @@ if(isset($_POST['btn_register'])){
 <html>
 <head>
 <title>Register Form</title>
-<link href="style1.css" rel="stylesheet" type="text/css">
+<link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <!--<b id="Home"><a href="index.php">Home</a></b>-->
-<br>
 <center>
 <div id="main">
-<h1>Register Session</h1>
+<h1 id="Head_Ob"><a id="Head_Ob" href=../index.php>Обяви.com</a></h1>
 <div id="login">
 <h2>Register your account.</h2>
 <form action="" method="post">
